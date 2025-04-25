@@ -11,6 +11,11 @@ class articleController {
         res.status(201).json({articles: articles});
         res.status(500).json({ error: 'Error fetching articles' });
     }
+
+    async getArticleBySlug(req, res) {
+        const article = await articleModel.findOne(req.params.slug);
+        res.status(201).json({ article: article });
+    }
 }
 
 module.exports = articleController;
